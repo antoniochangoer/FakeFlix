@@ -1,21 +1,25 @@
 import { Link, Head } from "@inertiajs/react";
 import Login from "./Auth/Login";
-import React, { Fragment } from "react";
 
 export default function Welcome({ auth }) {
     return (
         <>
             <Head title="Welcome" />
-            <div>
-                <div>
+            <div >
+                <div >
                     {auth.user ? (
-                        <Link href={route("dashboard")}>Dashboard</Link>
-                    ) : null}
+                        <Link
+                            href={route("dashboard")}
+                        >
+                            Dashboard
+                        </Link>
+                    ) :null}
                 </div>
-                <Login />
+                <Login/>
             </div>
 
             <h1>Welcome to FakeFlix</h1>
         </>
     );
 }
+

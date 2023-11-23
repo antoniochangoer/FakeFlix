@@ -23,10 +23,7 @@ export default function Dashboard({ auth }) {
                     </div>
                 </div>
             </div>
-            <MyComponent />
         </AuthenticatedLayout>
     );
 }
 
-// Maak een Favorieten films component en een FILM component (ENKELE FILM)
-// fake data array met 4 films loop erover heen en render je enkele film component
