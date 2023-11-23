@@ -36,7 +36,7 @@ export default function Login({ status }) {
                 </div>
             )}
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="">
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
