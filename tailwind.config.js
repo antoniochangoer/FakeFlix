@@ -11,6 +11,9 @@ export default {
 
     theme: {
         extend: {
+            fontFamily: {
+                "main": "Outfit, sans-serif"
+            },
             color: {
                 "brand-red": "#FC4747",
                 "brand-dark-blue": "#10141E",
