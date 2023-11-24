@@ -38,9 +38,9 @@ export default function Login({ status }) {
 
             <form
                 onSubmit={submit}
-                className="bg-brand-semi-blue rounded-[20px] max-w-md w-full mt-14"
+                className="bg-brand-semi-blue rounded-[20px] max-w-md w-full mt-14 md:mt-16"
             >
-                <div className="p-6">
+                <div className="p-6 md:p-8">
                     <h1 className="text-3xl font-light mb-10">Login</h1>
                     <div className="mt-2 relative">
                         <InputLabel htmlFor="email" value="Email" />
