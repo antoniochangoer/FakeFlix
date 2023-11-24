@@ -89,17 +89,17 @@ export default function Login({ status }) {
                     </div>
                     <div className="mt-10">
                         <PrimaryButton
-                            className="w-full bg-brand-red hover:bg-white hover:text-black flex justify-center font-light py-4 rounded-md"
+                            className="w-full bg-brand-red hover:bg-white hover:text-black focus:bg-white focus:text-black focus:outline-brand-red flex justify-center font-light py-4 rounded-md"
                             disabled={processing}
                         >
                             Log in to your account
                         </PrimaryButton>
                     </div>
                     <p className="mt-6 text-center">
-                        Don’t have an account?{" "}
+                        Don&apos;t have an account?{" "}
                         <Link
                             href={route("register")}
-                            className="text-brand-red"
+                            className="text-brand-red focus:outline-brand-red"
                         >
                             Sign Up
                         </Link>
