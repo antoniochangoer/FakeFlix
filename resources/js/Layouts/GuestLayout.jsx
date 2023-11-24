@@ -3,14 +3,14 @@ import { Link } from "@inertiajs/react";
 
 export default function Guest({ children }) {
     return (
-        <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-brand-dark-blue">
-            <div>
-                <Link href="/">
-                    <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                </Link>
-            </div>
+        <div className="min-h-screen bg-brand-dark-blue text-white font-light">
+            <div className="px-6 pt-12 flex flex-col items-center">
+                {/* logo */}
 
-            <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                <Link href="/">
+                    <ApplicationLogo className="w-8 h-6 mb-14 block fill-current text-gray-500" />
+                </Link>
+                {/* login form */}
                 {children}
             </div>
         </div>

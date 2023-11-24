@@ -36,55 +36,74 @@ export default function Login({ status }) {
                 </div>
             )}
 
-            <form onSubmit={submit} className="">
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
+            <form
+                onSubmit={submit}
+                className="bg-brand-semi-blue rounded-[20px] max-w-md w-full mt-14"
+            >
+                <div className="p-6">
+                    <h1 className="text-3xl font-light mb-10">Login</h1>
+                    <div className="mt-2 relative">
+                        <InputLabel htmlFor="email" value="Email" />
 
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        onChange={(e) => setData("email", e.target.value)}
-                    />
+                        <TextInput
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={data.email}
+                            className="peer block w-full border-0 bg-inherit py-1.5  focus:ring-0 sm:text-sm sm:leading-6"
+                            autoComplete="username"
+                            isFocused={true}
+                            onChange={(e) => setData("email", e.target.value)}
+                        />
+                        <div
+                            className="absolute inset-x-0 bottom-0 border-t border-brand-grey-blue peer-focus:border-t-[1px] peer-focus:border-white"
+                            aria-hidden="true"
+                        ></div>
 
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
+                        <InputError message={errors.email} className="mt-2" />
+                    </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <div className="mt-2 relative">
+                        <InputLabel htmlFor="password" value="Password" />
 
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        onChange={(e) => setData("password", e.target.value)}
-                    />
+                        <TextInput
+                            id="password"
+                            type="password"
+                            name="password"
+                            value={data.password}
+                            className="peer block w-full border-0 bg-inherit py-1.5  focus:ring-0 sm:text-sm sm:leading-6"
+                            autoComplete="current-password"
+                            onChange={(e) =>
+                                setData("password", e.target.value)
+                            }
+                        />
+                        <div
+                            className="absolute inset-x-0 bottom-0 border-t border-brand-grey-blue peer-focus:border-t-[1px] peer-focus:border-white"
+                            aria-hidden="true"
+                        ></div>
 
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="block mt-4">
-                    <label className="flex items-center">
+                        <InputError
+                            message={errors.password}
+                            className="mt-2"
+                        />
+                    </div>
+                    <div className="mt-10">
+                        <PrimaryButton
+                            className="w-full bg-brand-red hover:bg-white hover:text-black flex justify-center font-light py-4 rounded-md"
+                            disabled={processing}
+                        >
+                            Log in to your account
+                        </PrimaryButton>
+                    </div>
+                    <p className="mt-6 text-center">
+                        Don’t have an account?{" "}
                         <Link
                             href={route("register")}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="text-brand-red"
                         >
-                            Register
+                            Sign Up
                         </Link>
-                    </label>
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
+                    </p>
                 </div>
             </form>
         </GuestLayout>

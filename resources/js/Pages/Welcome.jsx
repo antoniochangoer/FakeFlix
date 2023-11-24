@@ -5,21 +5,17 @@ export default function Welcome({ auth }) {
     return (
         <>
             <Head title="Welcome" />
-            <div >
-                <div >
+            <div>
+                <div>
                     {auth.user ? (
-                        <Link
-                            href={route("dashboard")}
-                        >
+                        <Link href={route("dashboard")} className="text-white">
                             Dashboard
                         </Link>
-                    ) :null}
+                    ) : (
+                        <Login />
+                    )}
                 </div>
-                <Login/>
             </div>
-
-            <h1>Welcome to FakeFlix</h1>
         </>
     );
 }
-
