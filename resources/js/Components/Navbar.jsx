@@ -22,7 +22,7 @@ export default function Navbar() {
                 </div>
 
                 {/* list with links to pages */}
-                <ul className="flex 3xl:flex-col space-x-6 3xl:space-x-0 3xl:space-y-10 items-center justify-center">
+                <ul className="flex 3xl:flex-col gap-6 md:gap-6 3xl:gap-0 3xl:space-y-10 items-center justify-center">
                     <li>
                         <Link href={route("dashboard")} className="text-white">
                             <NavHomeIcon active={fakeState} />
