@@ -26,20 +26,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 // Route::get('/dashboard', function () {
-
-//     dd('Hello');
-//     $contents = Content::all();
-
-//     // Pass the content data to dashboard
-//     return Inertia::render('Dashboard', [
-//         'contents' => $contents
-//     ]);
+//     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', function () {
+
+    $contents = Content::all();
+
+    // Pass the content data to dashboard
+    return Inertia::render('Dashboard', [
+        'contents' => $contents
+    ]);
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
