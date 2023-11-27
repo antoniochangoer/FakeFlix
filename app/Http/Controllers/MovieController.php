@@ -16,7 +16,7 @@ class MovieController extends Controller
             return ThumbnailService::transformThumbnails($movie);
         });
 
-        return Inertia::render('Movies/Index', ['movies' => $movies]);
+        return Inertia::render('Dashboard', ['movies' => $movies]);
     }
 
     public function showTvSeries()
