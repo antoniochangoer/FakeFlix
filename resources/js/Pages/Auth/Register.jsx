@@ -129,9 +129,7 @@ export default function Register() {
                             className="w-full flex justify-center font-light py-4 rounded-md"
                             disabled={processing}
                         >
-                            <Link href={route("register")}>
-                                Create an account
-                            </Link>
+                            Create an account
                         </PrimaryButton>
                     </div>
                     <p className="mt-6 text-center">
