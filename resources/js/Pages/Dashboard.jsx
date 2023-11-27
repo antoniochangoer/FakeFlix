@@ -3,8 +3,8 @@ import { Head } from "@inertiajs/react";
 import React from "react";
 import Searchbar from "@/Components/Searchbar";
 
-export default function Dashboard({ auth, contents }) {
-    console.log(contents);
+export default function Dashboard({ auth, movies }) {
+    console.log(movies);
     console.log(auth, auth.user);
     return (
         <AuthenticatedLayout user={auth.user}>
