@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Example schema based on your JSON structure
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->json('thumbnail_trending')->nullable(); // Storing paths as JSON
-            $table->json('thumbnail_regular');
+            $table->unsignedBigInteger('category_id');
+            $table->json('thumbnail_trending')->nullable();
+            $table->json('thumbnail_regular')->nullable();
             $table->year('year');
-            $table->string('category');
             $table->string('rating');
-            $table->boolean('is_bookmarked');
-            $table->boolean('is_trending');
+            $table->boolean('is_trending')->default(false);
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('movies');
     }
 };

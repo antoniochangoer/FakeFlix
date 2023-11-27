@@ -2,13 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Movie;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class ContentSeeder extends Seeder
+
+class MoviesTableSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
         // Load JSON file
         $json = File::get("database/data/data.example.json");
@@ -16,10 +22,13 @@ class ContentSeeder extends Seeder
         // Decode the JSON data into an array
         $contents = json_decode($json, true); // true to get associative arrays
 
-        // Iterate over each content item and insert into the database
+        // Iterate over each movie item and insert into the database
         foreach ($contents as $content) {
-            DB::table('contents')->insert([
+            $category = Category::where('name', $content['category'])->first();
+
+            Movie::create([
                 'title' => $content['title'],
+                'category_id' => $category->id, 
                 'thumbnail_trending' => json_encode([
                     'small' => $content['thumbnail']['trending']['small'] ?? null,
                     'large' => $content['thumbnail']['trending']['large'] ?? null,
@@ -30,12 +39,9 @@ class ContentSeeder extends Seeder
                     'large' => $content['thumbnail']['regular']['large'] ?? null,
                 ]),
                 'year' => $content['year'],
-                'category' => $content['category'],
                 'rating' => $content['rating'],
-                'is_bookmarked' => $content['isBookmarked'],
                 'is_trending' => $content['isTrending'],
             ]);
-
         }
     }
 }

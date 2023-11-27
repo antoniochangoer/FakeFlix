@@ -30,15 +30,21 @@ Route::get('/', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', [MovieController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-    $contents = Content::all();
+Route::get('/movies/tv-series', [MovieController::class, 'showTvSeries'])
+    ->middleware(['auth']) // Assuming these should also be protected routes
+    ->name('tv-series');
 
-    // Pass the content data to dashboard
-    return Inertia::render('Dashboard', [
-        'contents' => $contents
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/movies/movies', [MovieController::class, 'showMovies'])
+    ->middleware(['auth'])
+    ->name('movies');
+
+Route::get('/movies/bookmarked', [MovieController::class, 'showBookmarked'])
+    ->middleware(['auth', 'verified'])
+    ->name('bookmarked');
 
 
 Route::middleware('auth')->group(function () {
