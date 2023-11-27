@@ -30,19 +30,19 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li>
-                        <Link href={route("dashboard")} className="text-white">
+                        <Link href={route("movies")} className="text-white">
                             <NavMoviesIcon />
                             <span className="sr-only">Movies</span>
                         </Link>
                     </li>{" "}
                     <li>
-                        <Link href={route("dashboard")} className="text-white">
+                        <Link href={route("tv-series")} className="text-white">
                             <NavSeriesIcon />
                             <span className="sr-only">TV Series</span>
                         </Link>
                     </li>{" "}
                     <li className="pt-[1px]">
-                        <Link href={route("dashboard")} className="text-white">
+                        <Link href={route("bookmarked")} className="text-white">
                             <NavBookmarkedIcon />
                             <span className="sr-only">Bookmarked</span>
                         </Link>
