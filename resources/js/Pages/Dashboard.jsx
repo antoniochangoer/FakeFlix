@@ -1,6 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import React from "react";
+import Searchbar from "@/Components/Searchbar";
 
 export default function Dashboard({ auth, contents }) {
     console.log(contents);
@@ -8,8 +9,11 @@ export default function Dashboard({ auth, contents }) {
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />
-            <h1>MAIN CONTENT</h1>
-            {/* in here the main page trending with all the content can be a component */}
+
+            {/* Searchbar think about where to handle the initial result */}
+            <Searchbar />
+
+            {/* <h1>MAIN CONTENT</h1> */}
         </AuthenticatedLayout>
     );
 }
