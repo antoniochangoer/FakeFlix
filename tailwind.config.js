@@ -10,6 +10,9 @@ export default {
     ],
 
     theme: {
+        screens: {
+            "3xl": "1440px",
+        },
         extend: {
             fontFamily: {
                 main: "Outfit, sans-serif",
