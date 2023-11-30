@@ -4,10 +4,13 @@ import TrendingContent from "@/Components/TrendingContent";
 
 import "swiper/css";
 
-export default function Trending({ movies }) {
-    const trending = movies.filter((movie) => {
-        if (movie.thumbnail_trending.small && movie.thumbnail_trending.large) {
-            return movie;
+export default function Trending({ content }) {
+    const trending = content.filter((content) => {
+        if (
+            content.thumbnail_trending.small &&
+            content.thumbnail_trending.large
+        ) {
+            return content;
         }
     });
 
