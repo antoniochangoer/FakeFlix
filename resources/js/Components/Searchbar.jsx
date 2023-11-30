@@ -4,7 +4,7 @@ import InputLabel from "@/Components/InputLabel";
 export default function Searchbar() {
     return (
         <>
-            <form className="mt-6 mx-4 md:mx-10 3xl:mt-14 3xl:mx-10 relative">
+            <form className="relative mt-6 mr-4 md:mr-10 3xl:mt-14 3xl:mr-10 mb-6 md:mb-8">
                 <div className="cursor-pointer absolute inset-y-0 left-0 flex items-center">
                     <MagnifyingGlassIcon
                         className="h-5 fill-white"

@@ -25,3 +25,24 @@ input:-webkit-autofill:active {
         grid-template-columns: minmax(96px, 100px) 1fr;
     }
 }
+
+.swiper {
+    width: 100vw;
+    height: 100%;
+    cursor: pointer;
+}
+
+.swiper-slide {
+    text-align: center;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}

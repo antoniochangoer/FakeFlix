@@ -2,6 +2,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import React from "react";
 import Searchbar from "@/Components/Searchbar";
+import { SwiperCarousel } from "@/Components/Trending";
 
 export default function Dashboard({ auth, movies }) {
     console.log(movies);
@@ -14,6 +15,7 @@ export default function Dashboard({ auth, movies }) {
             {/* TODO: Searchresult maybe as a child of searchbar? easy to pass to children instead of shared parent */}
             {/* TODO: Show either search result when typing OR the default rendered page with && or ? */}
             <Searchbar />
+            <Trending movies={movies} />
 
             {/* <h1>MAIN CONTENT</h1> */}
         </AuthenticatedLayout>
