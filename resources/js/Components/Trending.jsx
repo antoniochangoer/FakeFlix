@@ -77,9 +77,9 @@ export default function Trending({ movies }) {
                                     <span className="w-[3px] h-[3px] bg-[#979797] rounded-full inline-block"></span>
                                     <span className="inline-block">
                                         {movie.category_id === 1 ? (
-                                            <NavMoviesIcon />
+                                            <NavMoviesIcon hover={false} />
                                         ) : (
-                                            <NavSeriesIcon />
+                                            <NavSeriesIcon hover={false} />
                                         )}
                                     </span>
                                     <span className="w-[3px] h-[3px] bg-[#979797] rounded-full inline-block"></span>
