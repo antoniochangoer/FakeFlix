@@ -16,8 +16,6 @@ export default function Dashboard({ auth, movies }) {
             {/* TODO: Show either search result when typing OR the default rendered page with && or ? */}
             <Searchbar />
             <Trending movies={movies} />
-
-            {/* <h1>MAIN CONTENT</h1> */}
         </AuthenticatedLayout>
     );
 }
