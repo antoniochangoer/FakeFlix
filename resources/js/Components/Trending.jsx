@@ -6,7 +6,7 @@ import { NavMoviesIcon, NavSeriesIcon } from "./NavIcons";
 // Import Swiper styles
 import "swiper/css";
 
-export function Trending({ movies }) {
+export default function Trending({ movies }) {
     const trendingContent = movies.filter((movie) => {
         if (movie.thumbnail_trending.small && movie.thumbnail_trending.large) {
             return movie;
@@ -42,7 +42,7 @@ export function Trending({ movies }) {
                 className="mySwiper"
             >
                 {trendingContent.map((movie) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={movie.id}>
                         <picture className="relative">
                             <source
                                 srcSet={movie.thumbnail_trending.large}
@@ -68,8 +68,8 @@ export function Trending({ movies }) {
                                 />
                             </svg>
                         </div>
-                        <div className="absolute bottom-0 left- 0 w-full">
-                            <div className="bg-gradient-to-b from-transparent to-black p-4 w-full text-xs font-light">
+                        <div className="absolute bottom-0 left-0 w-full">
+                            <div className="bg-gradient-to-b from-transparent to-black p-4 w-full text-xs md:text-[15px] font-light rounded-[10px]">
                                 <div className="flex items-center gap-2 pb-2">
                                     <span className="inline-block">
                                         {movie.year}
@@ -87,7 +87,7 @@ export function Trending({ movies }) {
                                         {movie.rating}
                                     </span>
                                 </div>
-                                <p className="text-left font-medium text-[15px]">
+                                <p className="text-left font-medium text-[15px] md:text-2xl">
                                     {movie.title}
                                 </p>
                             </div>

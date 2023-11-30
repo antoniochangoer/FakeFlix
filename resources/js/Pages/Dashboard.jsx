@@ -2,7 +2,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import React from "react";
 import Searchbar from "@/Components/Searchbar";
-import { SwiperCarousel } from "@/Components/Trending";
+import Trending from "@/Components/Trending";
 
 export default function Dashboard({ auth, movies }) {
     console.log(movies);
