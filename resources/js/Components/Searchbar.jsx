@@ -1,10 +1,45 @@
+import { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import InputLabel from "@/Components/InputLabel";
 
-export default function Searchbar() {
+// recieve props to handle search results in the dashboard component
+export default function Searchbar({ content, setSearchResult }) {
+    // handle input search here and sync the state with the dashboard component
+    const [searchTerm, setSearchTerm] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (searchTerm.trim() === "") {
+            setSearchResult([]);
+            setErrorMessage("Please enter a search term");
+            return;
+        }
+
+        // handle and filter the search result here based on the term and couple that with the dashboard component
+        filterContent(searchTerm.trim());
+    }
+
+    function filterContent(term) {
+        const filteredContent = content.filter((content) => {
+            return content.title.toLowerCase().includes(term.toLowerCase());
+        });
+
+        if (filteredContent.length === 0) {
+            setSearchResult([]);
+            setErrorMessage("No results found");
+        }
+
+        setSearchResult(filteredContent);
+    }
+
     return (
         <>
-            <form className="relative mt-6 mr-4 md:mr-10 3xl:mt-14 3xl:mr-10 mb-6 md:mb-8">
+            <form
+                onSubmit={handleSubmit}
+                className="relative mt-6 mr-4 md:mr-10 3xl:mt-14 3xl:mr-10 mb-6 md:mb-8"
+            >
                 <div className="cursor-pointer absolute inset-y-0 left-0 flex items-center">
                     <MagnifyingGlassIcon
                         className="h-5 fill-white"
@@ -18,6 +53,11 @@ export default function Searchbar() {
                     value="Search"
                 />
                 <input
+                    value={searchTerm}
+                    onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        setErrorMessage("");
+                    }}
                     autoComplete="off"
                     type="text"
                     name="search"
@@ -29,6 +69,11 @@ export default function Searchbar() {
                     className={`absolute inset-x-0 bottom-0 border-t border-transparent peer-focus:border-t-[1px] peer-focus:border-brand-grey-blue`}
                     aria-hidden="true"
                 ></div>
+                {errorMessage && (
+                    <p className="absolute bottom-[-30px] left-0 text-sm text-brand-red">
+                        {errorMessage}
+                    </p>
+                )}
             </form>
         </>
     );
