@@ -3,7 +3,11 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import InputLabel from "@/Components/InputLabel";
 
 // recieve props to handle search results in the dashboard component
-export default function Searchbar({ content, setSearchResult }) {
+export default function Searchbar({
+    content,
+    setSearchResult,
+    placeholder = "Search for movies or TV series",
+}) {
     // handle input search here and sync the state with the dashboard component
     const [searchTerm, setSearchTerm] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -63,7 +67,7 @@ export default function Searchbar({ content, setSearchResult }) {
                     name="search"
                     id="search"
                     className={`peer font-light pl-8 bg-brand-dark-blue block w-full border-0 text-inherit shadow-sm ring-inset ring-brand-dark-blue placeholder:text-gray-400  focus:ring-2 focus:ring-inset focus:ring-brand-dark-blue text-base caret-brand-red md:text-xl`}
-                    placeholder="Search for movies or TV series"
+                    placeholder={placeholder}
                 />
                 <div
                     className={`absolute inset-x-0 bottom-0 border-t border-transparent peer-focus:border-t-[1px] peer-focus:border-brand-grey-blue`}
