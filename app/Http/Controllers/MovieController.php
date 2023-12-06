@@ -92,7 +92,7 @@ class MovieController extends Controller
             $user->movies()->attach($movieId);
         }
 
-        return response()->json(['bookmarked' => !$isBookmarked]);
+        // return response()->json(['bookmarked' => !$isBookmarked]);
     }
 
 
