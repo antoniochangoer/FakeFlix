@@ -1,13 +1,12 @@
 import { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import React from "react";
 import Searchbar from "@/Components/Searchbar";
 import Content from "@/Components/Content";
 
 export default function Bookmarked({ auth, bookmarkedMovies }) {
     const [searchResult, setSearchResult] = useState([]);
-    console.log(bookmarkedMovies);
 
     return (
         <AuthenticatedLayout user={auth.user}>
@@ -26,18 +25,6 @@ export default function Bookmarked({ auth, bookmarkedMovies }) {
                 content={bookmarkedMovies}
                 filteredContent={searchResult}
             />
-
-            {/* {bookmarkedMovies.map((movie) => (
-                <Link
-                    as="button"
-                    key={movie.id}
-                    href={`/movies/toggle-bookmark/${movie.id}`}
-                    method="post"
-                    className="inline-block bg-brand-red mb-4 mr-4 p-4 rounded-md"
-                >
-                    Toggle Bookmark for {movie.title}
-                </Link>
-            ))} */}
         </AuthenticatedLayout>
     );
 }
