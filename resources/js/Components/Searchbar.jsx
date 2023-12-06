@@ -8,16 +8,16 @@ export default function Searchbar({
     setSearchResult,
     placeholder = "Search for movies or TV series",
 }) {
-    // handle input search here and sync the state with the dashboard component
     const [searchTerm, setSearchTerm] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     function handleSubmit(e) {
         e.preventDefault();
 
+        // TODO: show error message if search term is empty or just render the all the content for this specific page?
         if (searchTerm.trim() === "") {
             setSearchResult([]);
-            setErrorMessage("Please enter a search term");
+            // setErrorMessage("Please enter a search term");
             return;
         }
 

@@ -1,20 +1,27 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
-import React from "react";
+import { useState } from "react";
 import Searchbar from "@/Components/Searchbar";
+import Content from "@/Components/Content";
 
 export default function TvSeries({ auth, tvSeries }) {
-    console.log(tvSeries);
-    console.log(auth, auth.user);
+    const [searchResult, setSearchResult] = useState([]);
 
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />
 
             {/* Searchbar think about where to handle the initial result */}
-            <Searchbar />
+            <Searchbar
+                placeholder="Search for TV Series"
+                content={tvSeries}
+                setSearchResult={setSearchResult}
+            />
 
-            <h1 className="text-white text-4xl">TV SERIES!</h1>
+            <h2 className="text-[2rem] font-light my-6 md:mt-10 3xl:mb-8">
+                TV Series
+            </h2>
+            <Content content={tvSeries} filteredContent={searchResult} />
         </AuthenticatedLayout>
     );
 }

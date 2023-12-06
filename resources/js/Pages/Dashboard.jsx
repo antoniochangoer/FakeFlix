@@ -8,8 +8,7 @@ import Content from "@/Components/Content";
 
 export default function Dashboard({ auth, movies }) {
     const [searchResult, setSearchResult] = useState([]);
-    // console.log(movies);
-    // console.log(auth, auth.user);
+
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />
@@ -26,7 +25,7 @@ export default function Dashboard({ auth, movies }) {
                     <Recommended content={movies} />
                 </>
             ) : (
-                <Content content={searchResult} />
+                <Content content={movies} filteredContent={searchResult} />
             )}
         </AuthenticatedLayout>
     );
