@@ -10,9 +10,8 @@ import {
 import ProfilePicture from "./ProfilePicture";
 
 export default function Navbar() {
-    const { url, component } = usePage();
-    // for now just a placeholder
-    const fakeState = true;
+    const { url } = usePage();
+
     return (
         <header className="text-white bg-brand-semi-blue p-4 3xl:w-full 3xl:py-[32px] 3xl:px-[28px] md:mt-6 3xl:m-8 md:mx-6 md:rounded-[10px] 3xl:rounded-[20px]">
             <nav className="flex justify-between items-center 3xl:justify-normal 3xl:h-full 3xl:flex-col">
@@ -30,7 +29,7 @@ export default function Navbar() {
                             href={route("dashboard")}
                             className={url === "/dashboard" ? "active" : ""}
                         >
-                            <NavHomeIcon active={fakeState} />
+                            <NavHomeIcon />
                             <span className="sr-only">Home</span>
                         </Link>
                     </li>
