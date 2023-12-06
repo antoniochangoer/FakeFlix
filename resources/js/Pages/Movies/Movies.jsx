@@ -6,7 +6,6 @@ import Content from "@/Components/Content";
 
 export default function Movies({ auth, movies }) {
     const [searchResult, setSearchResult] = useState([]);
-    console.log(movies);
 
     return (
         <AuthenticatedLayout user={auth.user}>
