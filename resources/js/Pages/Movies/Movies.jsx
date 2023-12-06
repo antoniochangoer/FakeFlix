@@ -12,7 +12,6 @@ export default function Movies({ auth, movies }) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />
 
-            {/* Searchbar think about where to handle the initial result */}
             <Searchbar
                 placeholder="Search for movies"
                 content={movies}

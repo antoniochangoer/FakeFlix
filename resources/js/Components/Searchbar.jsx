@@ -2,7 +2,6 @@ import { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import InputLabel from "@/Components/InputLabel";
 
-// recieve props to handle search results in the dashboard component
 export default function Searchbar({
     content,
     setSearchResult,
@@ -21,7 +20,6 @@ export default function Searchbar({
             return;
         }
 
-        // handle and filter the search result here based on the term and couple that with the dashboard component
         filterContent(searchTerm.trim());
     }
 

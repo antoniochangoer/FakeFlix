@@ -13,9 +13,6 @@ export default function Dashboard({ auth, movies }) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />
 
-            {/* TODO: Searchbar gets movies and uses that data to filter out based on the search result */}
-            {/* TODO: Searchresult maybe as a child of searchbar? easy to pass to children instead of shared parent */}
-            {/* TODO: Show either search result when typing OR the default rendered page with && or ? */}
             <Searchbar content={movies} setSearchResult={setSearchResult} />
 
             {/* If empty searchTerm show Trending component and Recommended IF NOT empty show results include no result as well */}
