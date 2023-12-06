@@ -12,8 +12,13 @@ class MovieController extends Controller
 {
     public function index()
     {
-        $movies = Movie::all()->map(function ($movie) {
-            return ThumbnailService::transformThumbnails($movie);
+        $userId = auth()->id();
+        $bookmarkedMovieIds = User::findOrFail($userId)->movies->pluck('id')->toArray();
+
+        $movies = Movie::all()->map(function ($movie) use ($bookmarkedMovieIds) {
+            $movieWithThumbnails = ThumbnailService::transformThumbnails($movie);
+            $movieWithThumbnails->bookmarked = in_array($movie->id, $bookmarkedMovieIds);
+            return $movieWithThumbnails;
         });
 
         return Inertia::render('Dashboard', ['movies' => $movies]);
@@ -21,42 +26,52 @@ class MovieController extends Controller
 
     public function showTvSeries()
     {
+        $userId = auth()->id();
+        $bookmarkedMovieIds = User::findOrFail($userId)->movies->pluck('id')->toArray();
+
         $tvSeries = Movie::with('category')
-            ->where('category_id', 2)
-            ->get()
-            ->map(function ($movie) {
-                return ThumbnailService::transformThumbnails($movie);
+        ->where('category_id', 2)
+        ->get()
+            ->map(function ($movie) use ($bookmarkedMovieIds) {
+                $movieWithThumbnails = ThumbnailService::transformThumbnails($movie);
+                $movieWithThumbnails->bookmarked = in_array($movie->id, $bookmarkedMovieIds);
+                return $movieWithThumbnails;
             });
 
         return Inertia::render('Movies/TvSeries', ['tvSeries' => $tvSeries]);
     }
 
+
     public function showMovies()
     {
+        $userId = auth()->id();
+        $bookmarkedMovieIds = User::findOrFail($userId)->movies->pluck('id')->toArray();
+
         $movies = Movie::with('category')
-            ->where('category_id', 1)
-            ->get()
-            ->map(function ($movie) {
-                return ThumbnailService::transformThumbnails($movie);
+        ->where('category_id', 1)
+        ->get()
+            ->map(function ($movie) use ($bookmarkedMovieIds) {
+                $movieWithThumbnails = ThumbnailService::transformThumbnails($movie);
+                $movieWithThumbnails->bookmarked = in_array($movie->id, $bookmarkedMovieIds);
+                return $movieWithThumbnails;
             });
 
         return Inertia::render('Movies/Movies', ['movies' => $movies]);
     }
 
+
     public function showBookmarked()
     {
         $userId = auth()->id();
-        $bookmarkedMovies = User::with('movies')
-            ->findOrFail($userId)
-            ->movies
-            ->map(function ($movie) {
-                $movieWithThumbnails = ThumbnailService::transformThumbnails($movie);
-                $movieWithThumbnails->bookmarked = true; 
-                return $movieWithThumbnails;
-            });
+        $bookmarkedMovies = User::with('movies')->findOrFail($userId)->movies->map(function ($movie) {
+            $movieWithThumbnails = ThumbnailService::transformThumbnails($movie);
+            $movieWithThumbnails->bookmarked = true;
+            return $movieWithThumbnails;
+        });
 
         return Inertia::render('Movies/Bookmarked', ['bookmarkedMovies' => $bookmarkedMovies]);
     }
+
 
 
     public function toggleBookmark($movieId)
