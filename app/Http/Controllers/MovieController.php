@@ -65,16 +65,16 @@ class MovieController extends Controller
 
         $isBookmarked = User::findOrFail($userId)->movies()->where('movie_id', $movieId)->exists();
 
+        dd($userId);
+        // if ($isBookmarked) {
+        //     // If bookmarked, remove it
+        //     $userId->movies()->detach($movieId);
+        // } else {
+        //     // If not bookmarked, add it
+        //     $userId->movies()->attach($movieId);
+        // }
 
-        if ($isBookmarked) {
-            // If bookmarked, remove it
-            $userId->movies()->detach($movieId);
-        } else {
-            // If not bookmarked, add it
-            $userId->movies()->attach($movieId);
-        }
-
-        return response()->json(['bookmarked' => !$isBookmarked]);
+        // return response()->json(['bookmarked' => !$isBookmarked]);
     }
 
 
