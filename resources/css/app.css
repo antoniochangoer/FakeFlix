@@ -46,3 +46,7 @@ input:-webkit-autofill:active {
     width: 100%;
     object-fit: cover;
 }
+
+a.active > svg > path {
+    fill: #ffffff;
+}
