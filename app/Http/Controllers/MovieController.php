@@ -59,13 +59,14 @@ class MovieController extends Controller
     }
 
 
-    public function toggleBookmark(Request $request, $movieId)
+    public function toggleBookmark($movieId)
     {
-        $userId = auth()->user();
+        dd($movieId);
+        // $userId = auth()->user();
 
-        $isBookmarked = User::findOrFail($userId)->movies()->where('movie_id', $movieId)->exists();
+        // $isBookmarked = User::findOrFail($userId)->movies()->where('movie_id', $movieId)->exists();
 
-        dd($userId);
+        
         // if ($isBookmarked) {
         //     // If bookmarked, remove it
         //     $userId->movies()->detach($movieId);

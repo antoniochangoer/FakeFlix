@@ -27,6 +27,15 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/test-toggle-bookmark', function () {
+    dd('Route is working');
+})->middleware('auth');
+
+Route::get('/movies/toggle-bookmark/{movieId}', [MovieController::class, 'toggleBookmark'])
+    ->middleware('auth')
+    ->name('movies.toggle-bookmark');
+    
+
 Route::get('/dashboard', [MovieController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -43,9 +52,7 @@ Route::get('/movies/bookmarked', [MovieController::class, 'showBookmarked'])
     ->middleware(['auth', 'verified'])
     ->name('bookmarked');
 
-Route::get('/movies/toggle-bookmark/{movie}', [MovieController::class, 'toggleBookmark'])
-    ->middleware('auth')
-    ->name('movies.toggle-bookmark');
+
 
 
 Route::middleware('auth')->group(function () {
