@@ -7,6 +7,8 @@ import Content from "@/Components/Content";
 export default function TvSeries({ auth, tvSeries }) {
     const [searchResult, setSearchResult] = useState([]);
 
+    console.log("render");
+
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />

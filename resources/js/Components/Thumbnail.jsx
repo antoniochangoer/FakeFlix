@@ -14,7 +14,7 @@ export default function Thumbnail({ content }) {
                     src={content.thumbnail_regular?.small}
                     alt=""
                 />
-                <Bookmark />
+                <Bookmark id={content.id} isBookmarked={content.bookmarked} />
             </picture>
             <div className="flex items-center justify-start gap-2 pb-2 mt-2 mb-1">
                 <span className="inline-block">{content.year}</span>
