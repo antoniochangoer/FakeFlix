@@ -50,9 +50,12 @@ class MovieController extends Controller
             ->findOrFail($userId)
             ->movies
             ->map(function ($movie) {
-                return ThumbnailService::transformThumbnails($movie);
+                $movieWithThumbnails = ThumbnailService::transformThumbnails($movie);
+                $movieWithThumbnails->bookmarked = true; 
+                return $movieWithThumbnails;
             });
 
         return Inertia::render('Movies/Bookmarked', ['bookmarkedMovies' => $bookmarkedMovies]);
     }
+
 }
