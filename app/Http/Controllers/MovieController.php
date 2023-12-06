@@ -61,22 +61,25 @@ class MovieController extends Controller
 
     public function toggleBookmark($movieId)
     {
-        dd($movieId);
-        // $userId = auth()->user();
+        $userId = auth()->id();
 
-        // $isBookmarked = User::findOrFail($userId)->movies()->where('movie_id', $movieId)->exists();
+        // Fetch the user from the database using the User model
+        $user = User::with('movies')->findOrFail($userId);
 
-        
-        // if ($isBookmarked) {
-        //     // If bookmarked, remove it
-        //     $userId->movies()->detach($movieId);
-        // } else {
-        //     // If not bookmarked, add it
-        //     $userId->movies()->attach($movieId);
-        // }
+        // Check if the movie is already bookmarked
+        $isBookmarked = $user->movies->contains($movieId);
 
-        // return response()->json(['bookmarked' => !$isBookmarked]);
+        if ($isBookmarked) {
+            // If bookmarked, remove it
+            $user->movies()->detach($movieId);
+        } else {
+            // If not bookmarked, add it
+            $user->movies()->attach($movieId);
+        }
+
+        return response()->json(['bookmarked' => !$isBookmarked]);
     }
+
 
 
 }
