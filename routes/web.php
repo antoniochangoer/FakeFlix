@@ -43,6 +43,10 @@ Route::get('/movies/bookmarked', [MovieController::class, 'showBookmarked'])
     ->middleware(['auth', 'verified'])
     ->name('bookmarked');
 
+Route::post('/movies/toggle-bookmark/{movie}', [MovieController::class, 'toggleBookmark'])
+    ->middleware('auth')
+    ->name('movies.toggle-bookmark');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
