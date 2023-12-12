@@ -27,10 +27,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/test-toggle-bookmark', function () {
-    dd('Route is working');
-})->middleware('auth');
-
 Route::post('/movies/toggle-bookmark/{movieId}', [MovieController::class, 'toggleBookmark'])
     ->middleware('auth')
     ->name('movies.toggle-bookmark');
