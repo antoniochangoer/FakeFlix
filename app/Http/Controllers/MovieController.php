@@ -92,8 +92,10 @@ class MovieController extends Controller
             $user->movies()->attach($movieId);
         }
 
+        return Inertia::render('Components/Bookmark', ['bookmarked', !$isBookmarked]);
+
         // return response()->json(['bookmarked' => !$isBookmarked]);
-        return Inertia::location(request()->header('Referer'));
+        // return Inertia::location(request()->header('Referer'));
     }
 
 
