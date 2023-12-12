@@ -11,7 +11,6 @@ export default function TvSeries({ auth, tvSeries }) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />
 
-            {/* Searchbar think about where to handle the initial result */}
             <Searchbar
                 placeholder="Search for TV Series"
                 content={tvSeries}

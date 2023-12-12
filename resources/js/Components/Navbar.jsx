@@ -15,14 +15,12 @@ export default function Navbar() {
     return (
         <header className="text-white bg-brand-semi-blue p-4 3xl:w-full 3xl:py-[32px] 3xl:px-[28px] md:mt-6 3xl:m-8 md:mx-6 md:rounded-[10px] 3xl:rounded-[20px]">
             <nav className="flex justify-between items-center 3xl:justify-normal 3xl:h-full 3xl:flex-col">
-                {/* logo and home button */}
                 <div className="3xl:mb-20">
                     <Link href={route("dashboard")} className="text-black">
                         <ApplicationLogo className="h-8 w-auto sm:h-10" />
                     </Link>
                 </div>
 
-                {/* list with links to pages */}
                 <ul className="flex 3xl:flex-col gap-6 md:gap-8 3xl:gap-0 3xl:space-y-10 items-center justify-center">
                     <li>
                         <Link
@@ -66,8 +64,6 @@ export default function Navbar() {
                     </li>
                 </ul>
 
-                {/* profile avatar component */}
-                {/* pass props for img */}
                 <ProfilePicture />
             </nav>
         </header>

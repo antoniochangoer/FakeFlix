@@ -2,6 +2,7 @@ import Bookmark from "./Bookmark";
 import { NavMoviesIcon, NavSeriesIcon } from "./NavIcons";
 
 export default function Thumbnail({ content }) {
+    console.log(content);
     return (
         <div className="flex flex-col mb-6 md:mb-8 3xl:mb-10">
             <picture className="relative">
@@ -12,7 +13,7 @@ export default function Thumbnail({ content }) {
                 <img
                     className="rounded-[10px]"
                     src={content.thumbnail_regular?.small}
-                    alt=""
+                    alt={content.title}
                 />
                 <Bookmark id={content.id} isBookmarked={content.bookmarked} />
             </picture>

@@ -6,29 +6,23 @@ export default function Bookmark({ id, isBookmarked: initialIsBookmarked }) {
 
     const handleBookmarkClick = (e) => {
         e.preventDefault();
-        setIsBookmarked(!isBookmarked); // Optimistically update the UI
+        setIsBookmarked(!isBookmarked);
 
         Inertia.post(
             `/movies/toggle-bookmark/${id}`,
             {},
             {
-                only: ["bookmarked"], // Only return the 'bookmarked' prop from the server response
+                only: ["bookmarked"],
                 onSuccess: (response) => {
-                    console.log(response);
-                    // Handle the successful response here
-                    // The 'response' contains the entire Inertia page object, you can access the JSON data via 'response.props'
                     if (response.props.bookmarked !== undefined) {
-                        console.log(response.props.bookmarked);
                         setIsBookmarked(response.props.bookmarked);
                     }
                 },
                 onError: (errors) => {
-                    // Handle the error response here
-                    // 'errors' will contain any validation errors or other error messages sent from the server
                     console.error("An error occurred:", errors);
-                    setIsBookmarked(initialIsBookmarked); // Revert optimistic update
+                    setIsBookmarked(initialIsBookmarked);
                 },
-                preserveState: true, // Preserve the local state of the component
+                preserveState: true,
             }
         );
     };
