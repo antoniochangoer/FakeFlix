@@ -10,36 +10,30 @@ export default function Searchbar({
     const [searchTerm, setSearchTerm] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    function filterContent(term) {
+        setErrorMessage("");
 
-        // TODO: show error message if search term is empty or just render the all the content for this specific page?
-        if (searchTerm.trim() === "") {
+        if (term.trim() === "") {
             setSearchResult([]);
-            // setErrorMessage("Please enter a search term");
             return;
         }
 
-        filterContent(searchTerm.trim());
-    }
-
-    function filterContent(term) {
-        const filteredContent = content.filter((content) => {
-            return content.title.toLowerCase().includes(term.toLowerCase());
+        const filteredContent = content.filter((item) => {
+            return item.title.toLowerCase().includes(term.toLowerCase());
         });
 
         if (filteredContent.length === 0) {
-            setSearchResult([]);
             setErrorMessage("No results found");
+            setSearchResult([]);
+        } else {
+            setSearchResult(filteredContent);
         }
-
-        setSearchResult(filteredContent);
     }
 
     return (
         <>
             <form
-                onSubmit={handleSubmit}
+                onSubmit={(e) => e.preventDefault()}
                 className="relative mt-6 mr-4 md:mr-10 3xl:mt-14 3xl:mr-10 mb-6 md:mb-8"
             >
                 <div className="cursor-pointer absolute inset-y-0 left-0 flex items-center">
@@ -57,18 +51,19 @@ export default function Searchbar({
                 <input
                     value={searchTerm}
                     onChange={(e) => {
-                        setSearchTerm(e.target.value);
-                        setErrorMessage("");
+                        const newSearchTerm = e.target.value;
+                        setSearchTerm(newSearchTerm);
+                        filterContent(newSearchTerm);
                     }}
                     autoComplete="off"
                     type="text"
                     name="search"
                     id="search"
-                    className={`peer font-light pl-8 bg-brand-dark-blue block w-full border-0 text-inherit shadow-sm ring-inset ring-brand-dark-blue placeholder:text-gray-400  focus:ring-2 focus:ring-inset focus:ring-brand-dark-blue text-base caret-brand-red md:text-xl`}
+                    className="peer font-light pl-8 bg-brand-dark-blue block w-full border-0 text-inherit shadow-sm ring-inset ring-brand-dark-blue placeholder:text-gray-400  focus:ring-2 focus:ring-inset focus:ring-brand-dark-blue text-base caret-brand-red md:text-xl"
                     placeholder={placeholder}
                 />
                 <div
-                    className={`absolute inset-x-0 bottom-0 border-t border-transparent peer-focus:border-t-[1px] peer-focus:border-brand-grey-blue`}
+                    className="absolute inset-x-0 bottom-0 border-t border-transparent peer-focus:border-t-[1px] peer-focus:border-brand-grey-blue"
                     aria-hidden="true"
                 ></div>
                 {errorMessage && (
