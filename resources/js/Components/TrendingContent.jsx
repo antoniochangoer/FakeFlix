@@ -16,7 +16,7 @@ export default function TrendingContent({ content }) {
                 />
             </picture>
             <Bookmark id={content.id} isBookmarked={content.bookmarked} />
-            <div className="absolute bottom-0 left-0 w-full pb-6">
+            <div className="absolute bottom-0 left-0 w-full">
                 <div className="bg-gradient-to-b from-transparent to-black p-4 w-full text-xs md:text-[15px] font-light rounded-[10px]">
                     <div className="flex items-center gap-2 pb-2">
                         <span className="inline-block">{content.year}</span>
