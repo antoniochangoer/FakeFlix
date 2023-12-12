@@ -9,8 +9,6 @@ import Content from "@/Components/Content";
 export default function Dashboard({ auth, movies }) {
     const [searchResult, setSearchResult] = useState([]);
 
-    console.log(searchResult);
-
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Dashboard" />
